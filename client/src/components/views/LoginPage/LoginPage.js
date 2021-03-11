@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {loginUser} from '../../../_actions/user_action';
 import {withRouter} from 'react-router-dom';
+import {Button, Typography  } from 'antd';
+
+const {Title} = Typography ;
 
 function LoginPage(props) {
     const dispatch = useDispatch();   
@@ -41,7 +44,8 @@ function LoginPage(props) {
         });
     }
     return (
-        <div style={{ display: 'flex', justifyContent: "center", alignItems: 'center', width: '100%', height: '100vh'}}>
+        <div style={{ display: 'flex', justifyContent: "center", alignItems: 'center', width: '100%', height: '100vh', flexDirection:'column'}}>
+            <Title level={2}>Log In</Title>
             <form style={{ display: 'flex', flexDirection: 'column' }}
                 onSubmit={onSubmitHandler}>
                <label>Email</label>
@@ -49,10 +53,13 @@ function LoginPage(props) {
                <label>Password</label>
                <input type="Password" value={Password} onChange={onPasswordHandler}/>
                <br />
-               <button>
+               <Button htmlType="submit">
                    Login
-                </button> 
+                </Button> 
             </form>
+            <a href="/register" style={{marginTop: '20px', color: '#595959', fontSize: '10px'}}>
+                Sign Up
+            </a>
         </div>
     )
 }
